@@ -14,6 +14,7 @@
 		9B7A1E39252CBBBA00B437F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7A1E37252CBBBA00B437F6 /* LaunchScreen.storyboard */; };
 		9B7A1E44252CBBBA00B437F6 /* RestAPIPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A1E43252CBBBA00B437F6 /* RestAPIPOCTests.swift */; };
 		9B7A1E4F252CBBBA00B437F6 /* RestAPIPOCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A1E4E252CBBBA00B437F6 /* RestAPIPOCUITests.swift */; };
+		BAED783CD3587B3284DDB1B9 /* Pods_RestAPIPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F600BAA6BC90EA1EC49252B /* Pods_RestAPIPOC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38A997BAD8B337FF5608C891 /* Pods-RestAPIPOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestAPIPOC.release.xcconfig"; path = "Target Support Files/Pods-RestAPIPOC/Pods-RestAPIPOC.release.xcconfig"; sourceTree = "<group>"; };
+		5F600BAA6BC90EA1EC49252B /* Pods_RestAPIPOC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RestAPIPOC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B417FC5252DA57D006947B3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9B7A1E29252CBBB800B437F6 /* RestAPIPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestAPIPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7A1E2C252CBBB800B437F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		9B7A1E4A252CBBBA00B437F6 /* RestAPIPOCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestAPIPOCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7A1E4E252CBBBA00B437F6 /* RestAPIPOCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIPOCUITests.swift; sourceTree = "<group>"; };
 		9B7A1E50252CBBBA00B437F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4A83EA643B2E9FF3A696931 /* Pods-RestAPIPOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestAPIPOC.debug.xcconfig"; path = "Target Support Files/Pods-RestAPIPOC/Pods-RestAPIPOC.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAED783CD3587B3284DDB1B9 /* Pods_RestAPIPOC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21B811727B7D071D8E70BC67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4A83EA643B2E9FF3A696931 /* Pods-RestAPIPOC.debug.xcconfig */,
+				38A997BAD8B337FF5608C891 /* Pods-RestAPIPOC.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9B417FC0252DA3F7006947B3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +132,8 @@
 				9B7A1E42252CBBBA00B437F6 /* RestAPIPOCTests */,
 				9B7A1E4D252CBBBA00B437F6 /* RestAPIPOCUITests */,
 				9B7A1E2A252CBBB800B437F6 /* Products */,
+				21B811727B7D071D8E70BC67 /* Pods */,
+				AAD3F369D6DF9E22B4846437 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +182,14 @@
 			path = RestAPIPOCUITests;
 			sourceTree = "<group>";
 		};
+		AAD3F369D6DF9E22B4846437 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F600BAA6BC90EA1EC49252B /* Pods_RestAPIPOC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,9 +197,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B7A1E53252CBBBA00B437F6 /* Build configuration list for PBXNativeTarget "RestAPIPOC" */;
 			buildPhases = (
+				FE76EEB3E8BF106CC6D42AE4 /* [CP] Check Pods Manifest.lock */,
 				9B7A1E25252CBBB800B437F6 /* Sources */,
 				9B7A1E26252CBBB800B437F6 /* Frameworks */,
 				9B7A1E27252CBBB800B437F6 /* Resources */,
+				3010F430811160412AAF8BF2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -289,6 +316,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3010F430811160412AAF8BF2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RestAPIPOC/Pods-RestAPIPOC-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RestAPIPOC/Pods-RestAPIPOC-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RestAPIPOC/Pods-RestAPIPOC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE76EEB3E8BF106CC6D42AE4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RestAPIPOC-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9B7A1E25252CBBB800B437F6 /* Sources */ = {
@@ -460,6 +529,7 @@
 		};
 		9B7A1E54252CBBBA00B437F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4A83EA643B2E9FF3A696931 /* Pods-RestAPIPOC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -478,6 +548,7 @@
 		};
 		9B7A1E55252CBBBA00B437F6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38A997BAD8B337FF5608C891 /* Pods-RestAPIPOC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
