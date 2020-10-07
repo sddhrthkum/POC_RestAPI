@@ -8,6 +8,7 @@
 
 import UIKit
 import PureLayout
+import SDWebImage
 
 class InfoTableViewCell: UITableViewCell {
     
@@ -36,7 +37,6 @@ class InfoTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill // without this your image will shrink and looks ugly
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 5
-        imageView.backgroundColor = .lightGray
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -46,19 +46,6 @@ class InfoTableViewCell: UITableViewCell {
         view.backgroundColor = .lightGray
         return view
     }()
-    
-    
-    var title: String? {
-        didSet {
-            self.titleLabel.text = title
-        }
-    }
-    
-    var messageDescription: String? {
-        didSet {
-            descriptionLabel.text = messageDescription
-        }
-    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -73,9 +60,8 @@ class InfoTableViewCell: UITableViewCell {
         
         infoImageView.autoPinEdge(.top, to: .top, of: contentView, withOffset: 15)
         infoImageView.autoPinEdge(.leading, to: .leading, of: contentView, withOffset: 15)
-        infoImageView.autoSetDimension(.width, toSize: 150)
-        infoImageView.autoSetDimension(.height, toSize: 200)
-        
+        infoImageView.autoPinEdge(.trailing, to: .trailing, of: contentView, withOffset: -15)
+
         separatorView.autoPinEdge(.leading, to: .leading, of: contentView)
         separatorView.autoPinEdge(.trailing, to: .trailing, of: contentView)
         separatorView.autoPinEdge(.bottom, to: .bottom, of: contentView)
@@ -91,6 +77,24 @@ class InfoTableViewCell: UITableViewCell {
 
      required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        descriptionLabel.text = nil
+        infoImageView.image = nil
+    }
+    
+    func configureCell(title: String?, message: String?) {
+        self.titleLabel.text = title
+        self.descriptionLabel.text = message
+    }
+    
+    func setImage(imageString: String?) {
+        if let imageString = imageString, let url = URL(string: imageString) {
+            infoImageView.sd_setImage(with: url, completed: nil)
+        }
     }
     
 }

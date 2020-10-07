@@ -12,12 +12,20 @@ import PureLayout
 class HomeViewController: UIViewController {
 
     lazy var infoTableView = UITableView()
+    lazy var countryInfoViewModel = CountryInfoViewModel()
     
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        return activityIndicator
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         registerCell()
         setNavigationTitle()
+        countryInfoViewModel.delegate = self
+        countryInfoViewModel.getCountryInfo()
     }
 
 }
@@ -37,6 +45,7 @@ private extension HomeViewController {
     func setupTableView() {
         infoTableView.separatorStyle = .none
         infoTableView.dataSource = self
+        infoTableView.delegate = self
         infoTableView.allowsSelection = false
     }
     
@@ -48,24 +57,81 @@ private extension HomeViewController {
         infoTableView.register(InfoTableViewCell.self, forCellReuseIdentifier: "InfoTableViewCell")
     }
     
+    func startLoader() {
+        DispatchQueue.main.async { [weak self] in
+            guard let weakSelf = self else { return  }
+            weakSelf.infoTableView.isHidden = true
+            weakSelf.view.addSubview(weakSelf.activityIndicatorView)
+            weakSelf.activityIndicatorView.configureForAutoLayout()
+            weakSelf.activityIndicatorView.autoAlignAxis(.vertical, toSameAxisOf: weakSelf.view)
+            weakSelf.activityIndicatorView.autoAlignAxis(.horizontal, toSameAxisOf: weakSelf.view)
+            weakSelf.activityIndicatorView.startAnimating()
+        }
+       
+    }
+    
+    func stopLoader() {
+        DispatchQueue.main.async { [weak self] in
+            guard let weakSelf = self else { return  }
+            weakSelf.infoTableView.isHidden = false
+            weakSelf.activityIndicatorView.stopAnimating()
+            weakSelf.activityIndicatorView.removeFromSuperview()
+        }
+    }
+    
+    func showErrorAlert(title: String = "Error", message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return countryInfoViewModel.numberOfRows()
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
-        cell.title = "Siddharth"
-        cell.messageDescription = "He is a programmer who loves palying with code. He works in Techjini Solutions."
+        countryInfoViewModel.configureCell(cell: cell, index: indexPath.row)
+        countryInfoViewModel.showImageForCell(cell: cell, index: indexPath.row)
         return cell
     }
+    
 }
 
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+}
+
+extension HomeViewController: CountryInfoViewModelDelegate {
+    
+    func fetchCountryInfoStarted() {
+        startLoader()
+    }
+    
+    func fetchCountryInfoEnded() {
+        DispatchQueue.main.async { [weak self] in
+            self?.infoTableView.reloadData()
+        }
+        stopLoader()
+    }
+    
+    func fetchCountryEndedWithError(error: Error?, code: Int) {
+        var message = ""
+        if let error = error as NSError? {
+            message = error.localizedDescription
+        } else if let error = error as? NetworkService.NetworkError {
+            message = error.localizedDescription
+        }
+        showErrorAlert(message: message)
     }
 }
