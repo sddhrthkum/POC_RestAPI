@@ -63,8 +63,8 @@ final class CountryInfoViewModel {
         cell.configureCell(title: title(index: index), message: message(index: index))
     }
     
-    func showImageForCell(cell: InfoTableViewCell, index: Int) {
-        cell.setImage(imageString: imageUrl(index: index))
+    func showImageForCell(cell: InfoTableViewCell, index: Int, completion: @escaping () -> Void) {
+        cell.setImage(imageString: imageUrl(index: index), completion: completion)
     }
     
 }

@@ -91,9 +91,11 @@ class InfoTableViewCell: UITableViewCell {
         self.descriptionLabel.text = message
     }
     
-    func setImage(imageString: String?) {
+    func setImage(imageString: String?, completion: @escaping () -> Void) {
         if let imageString = imageString, let url = URL(string: imageString) {
-            infoImageView.sd_setImage(with: url, completed: nil)
+            infoImageView.sd_setImage(with: url) { (_, _, _, _) in
+                completion()
+            }
         }
     }
     

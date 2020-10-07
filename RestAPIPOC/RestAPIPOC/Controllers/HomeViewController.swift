@@ -50,7 +50,7 @@ private extension HomeViewController {
     }
     
     func setNavigationTitle(_ title: String? = nil) {
-        self.navigationItem.title = title ?? "About Canada"
+        self.navigationItem.title = title
     }
     
     func registerCell() {
@@ -98,7 +98,9 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
         countryInfoViewModel.configureCell(cell: cell, index: indexPath.row)
-        countryInfoViewModel.showImageForCell(cell: cell, index: indexPath.row)
+        countryInfoViewModel.showImageForCell(cell: cell, index: indexPath.row, completion: { [weak self] in
+            self?.infoTableView.rectForRow(at: indexPath)
+        })
         return cell
     }
     
@@ -121,6 +123,7 @@ extension HomeViewController: CountryInfoViewModelDelegate {
     func fetchCountryInfoEnded() {
         DispatchQueue.main.async { [weak self] in
             self?.infoTableView.reloadData()
+            self?.setNavigationTitle(self?.countryInfoViewModel.screenTitle())
         }
         stopLoader()
     }
