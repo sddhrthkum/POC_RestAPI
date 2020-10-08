@@ -147,6 +147,8 @@ extension HomeViewController: CountryInfoViewModelDelegate {
         } else if let error = error as? NetworkService.NetworkError {
             message = error.localizedDescription
         }
-        showErrorAlert(message: message)
+        DispatchQueue.main.async { [weak self] in
+            self?.showErrorAlert(message: message)
+        }
     }
 }
