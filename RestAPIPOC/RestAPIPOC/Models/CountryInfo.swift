@@ -11,7 +11,7 @@ import Foundation
 struct CountryInfo : Codable {
     
     let title : String?
-    let rows : [CountryInfoRow]?
+    private let rows : [CountryInfoRow]?
 
     enum CodingKeys: String, CodingKey {
         case title = "title"
@@ -22,6 +22,12 @@ struct CountryInfo : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decodeIfPresent(String.self, forKey: .title)
         rows = try values.decodeIfPresent([CountryInfoRow].self, forKey: .rows)
+    }
+    
+    func filteredRows() -> [CountryInfoRow]? {
+        rows?.filter {
+            $0.imageUrl != nil || $0.description != nil || $0.title != nil
+        }
     }
 
 }

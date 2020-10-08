@@ -40,7 +40,7 @@ final class CountryInfoViewModel {
     }
     
     func numberOfRows() -> Int {
-        return countryInfo?.rows?.count ?? 0
+        return countryInfo?.filteredRows()?.count ?? 0
     }
     
     func screenTitle() -> String? {
@@ -48,15 +48,15 @@ final class CountryInfoViewModel {
     }
     
     func title(index: Int) -> String? {
-        return countryInfo?.rows?[index].title
+        return countryInfo?.filteredRows()?[index].title
     }
     
     func message(index: Int) -> String? {
-        return countryInfo?.rows?[index].description
+        return countryInfo?.filteredRows()?[index].description
     }
     
     func imageUrl(index: Int) -> String? {
-        return countryInfo?.rows?[index].imageUrl
+        return countryInfo?.filteredRows()?[index].imageUrl
     }
     
     func configureCell(cell: InfoTableViewCell, index: Int) {
