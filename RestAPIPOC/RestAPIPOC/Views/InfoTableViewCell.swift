@@ -93,8 +93,10 @@ class InfoTableViewCell: UITableViewCell {
     
     func setImage(imageString: String?, completion: @escaping () -> Void) {
         if let imageString = imageString, let url = URL(string: imageString) {
-            infoImageView.sd_setImage(with: url) { (_, _, _, _) in
-                completion()
+            infoImageView.sd_setImage(with: url) { (image, error, cacheType, url) in
+                if error == nil {
+                    completion()
+                }
             }
         }
     }

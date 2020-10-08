@@ -18,6 +18,13 @@ class HomeViewController: UIViewController {
         let activityIndicator = UIActivityIndicatorView()
         return activityIndicator
     }()
+    
+    let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        refreshControl.tintColor = .lightGray
+        return refreshControl
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +54,7 @@ private extension HomeViewController {
         infoTableView.dataSource = self
         infoTableView.delegate = self
         infoTableView.allowsSelection = false
+        infoTableView.addSubview(refreshControl)
     }
     
     func setNavigationTitle(_ title: String? = nil) {
@@ -67,7 +75,6 @@ private extension HomeViewController {
             weakSelf.activityIndicatorView.autoAlignAxis(.horizontal, toSameAxisOf: weakSelf.view)
             weakSelf.activityIndicatorView.startAnimating()
         }
-       
     }
     
     func stopLoader() {
@@ -87,6 +94,11 @@ private extension HomeViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    @objc func handleRefresh() {
+        countryInfoViewModel.getCountryInfo()
+        refreshControl.endRefreshing()
+    }
+    
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -99,7 +111,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
         countryInfoViewModel.configureCell(cell: cell, index: indexPath.row)
         countryInfoViewModel.showImageForCell(cell: cell, index: indexPath.row, completion: { [weak self] in
-            self?.infoTableView.rectForRow(at: indexPath)
+            self?.infoTableView.reloadRows(at: [indexPath], with: .none)
         })
         return cell
     }
