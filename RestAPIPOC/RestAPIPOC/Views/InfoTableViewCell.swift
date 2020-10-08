@@ -34,9 +34,9 @@ class InfoTableViewCell: UITableViewCell {
     
     let infoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill // without this your image will shrink and looks ugly
+        imageView.contentMode = .center
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 15
         imageView.clipsToBounds = true
         return imageView
     }()
