@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B362D00252EE6FE002A63FD /* CountryInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B362CFF252EE6FE002A63FD /* CountryInfoTests.swift */; };
+		9B362D02252EEDC4002A63FD /* CountryInfoRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B362D01252EEDC4002A63FD /* CountryInfoRowTests.swift */; };
 		9B417FC6252DA57D006947B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B417FC5252DA57D006947B3 /* HomeViewController.swift */; };
 		9B417FC9252DB0F5006947B3 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B417FC8252DB0F5006947B3 /* InfoTableViewCell.swift */; };
 		9B417FCB252DE720006947B3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B417FCA252DE720006947B3 /* NetworkService.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		38A997BAD8B337FF5608C891 /* Pods-RestAPIPOC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RestAPIPOC.release.xcconfig"; path = "Target Support Files/Pods-RestAPIPOC/Pods-RestAPIPOC.release.xcconfig"; sourceTree = "<group>"; };
 		5F600BAA6BC90EA1EC49252B /* Pods_RestAPIPOC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RestAPIPOC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B362CFF252EE6FE002A63FD /* CountryInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoTests.swift; sourceTree = "<group>"; };
+		9B362D01252EEDC4002A63FD /* CountryInfoRowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoRowTests.swift; sourceTree = "<group>"; };
 		9B417FC5252DA57D006947B3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9B417FC8252DB0F5006947B3 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		9B417FCA252DE720006947B3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 			children = (
 				9B7A1E43252CBBBA00B437F6 /* RestAPIPOCTests.swift */,
 				9B7A1E45252CBBBA00B437F6 /* Info.plist */,
+				9B362CFF252EE6FE002A63FD /* CountryInfoTests.swift */,
+				9B362D01252EEDC4002A63FD /* CountryInfoRowTests.swift */,
 			);
 			path = RestAPIPOCTests;
 			sourceTree = "<group>";
@@ -397,6 +403,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B362D00252EE6FE002A63FD /* CountryInfoTests.swift in Sources */,
+				9B362D02252EEDC4002A63FD /* CountryInfoRowTests.swift in Sources */,
 				9B7A1E44252CBBBA00B437F6 /* RestAPIPOCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

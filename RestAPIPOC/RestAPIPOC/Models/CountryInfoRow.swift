@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct CountryInfoRow : Codable {
+struct CountryInfoRow : Codable, Equatable {
+    
     let title : String?
     let description : String?
     let imageUrl : String?
@@ -24,6 +25,17 @@ struct CountryInfoRow : Codable {
         title = try values.decodeIfPresent(String.self, forKey: .title)
         description = try values.decodeIfPresent(String.self, forKey: .description)
         imageUrl = try values.decodeIfPresent(String.self, forKey: .imageUrl)
+    }
+    
+    //MARK:- Used for Unit testing 
+    init(title: String?, description: String?, imageUrl: String?) {
+        self.title = title
+        self.description = description
+        self.imageUrl = imageUrl
+    }
+    
+    static func == (lhs: CountryInfoRow, rhs: CountryInfoRow) -> Bool {
+        return lhs.title == rhs.title && lhs.description == rhs.description && lhs.imageUrl == rhs.imageUrl
     }
     
 }
